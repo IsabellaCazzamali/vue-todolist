@@ -1,7 +1,14 @@
-# Vue 3 + Vite
+# Descrizione:
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Fare l'esercizio della to do list per ogni todo avremo un oggetto, formato da due proprietà:
 
-## Recommended IDE Setup
+- text, una stringa che indica il testo del todo
+- done, un booleano (true/false) che indica se il todo è stato fatto oppure no
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## MILESTONE 1
+
+Stampare all'interno di una lista HTML un item per ogni todo. Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.
+
+## MILESTONE 2
+
+Visualizzare a fianco ad ogni item ha una "x": cliccando su di essa, il todo viene rimosso dalla lista.
