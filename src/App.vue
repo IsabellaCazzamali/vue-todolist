@@ -44,11 +44,21 @@ export default {
     addTask(){
       console.log('add this task', this.newTask);
       if(this.newTask.length > 4) {
-        this.tasks.unshift(this.newTask);
+        // Crea un nuovo oggetto per la task da aggiungere
+        const obj = {
+          text: this.newTask,
+          done: false
+        };
+        // Agisce sull'oggetto creato aggiungendo una nuova task
+        this.tasks.unshift(obj);
         this.newTask = '';
       } else {
         this.error = 'The task must be at least 5 characters long';
       }
+    },
+    // Cambia lo stato della task
+    toggle(index){
+      this.tasks[index].done = !this.tasks[index].done;
     }
   }
 }
@@ -67,12 +77,12 @@ export default {
 
       <span class="text-danger" v-if="error">{{ error }}</span>
 
-        <ul class="list-group">
+        <ul class="list-group" v-if="tasks.length > 0">
 
           <!-- Stampa un item per ogni todo -->
-          <li v-for="(task, index) in tasks" class="list-group-item">
-          <!-- Aggiunge testo sbarrato quando true / Option 1 con style binding -->
-            <span :style="{textDecoration: task.done ? 'line-through' : '' }">
+          <li v-for="(task, index) in tasks" class="list-group-item d-flex justify-content-between">
+          <!-- Aggiunge testo sbarrato quando true / Option 1 con style binding + evento al click -->
+            <span :style="{textDecoration: task.done ? 'line-through' : '' }" @click="toggle(index)">
               {{ task.text }}
             </span>
             <span v-on:click="removeTask(index)">
@@ -89,8 +99,8 @@ export default {
       
           </li>
         </ul>
-        <p>
-          Nothing left to do! Enjoy your day
+        <p v-else>
+          Nothing left to do! Enjoy your day!
         </p>
       
     </div>
